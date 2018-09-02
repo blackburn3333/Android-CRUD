@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorMain"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/logoDec"
+            app:srcCompat="@drawable/text" />
+
+        <TextClock
+            android:id="@+id/digitalClock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fjallaoneregular"
+            android:textAlignment="center"
+            android:textColor="@color/whitecolor"
+            android:textSize="40sp"
+            tools:layout_editor_absoluteY="116dp"
+            android:layout_marginTop="0dp"/>
+
+        <TextClock
+            android:id="@+id/digitalDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fjallaoneregular"
+            android:format12Hour="E, MMM d yyyy"
+            android:textAlignment="center"
+            android:textColor="@color/whitecolor"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/note_text"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="@string/textBoxHint"
+            android:inputType="textMultiLine"
+            android:lines="5"
+            android:textColor="@color/whitecolor"
+            android:textColorLink="@color/colorMainLight"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/inset_note_button"
+            android:layout_width="300dp"
+            android:layout_height="31dp"
+            android:layout_gravity="center"
+            android:background="@color/colorMainLight"
+            android:text="@string/buttonTextInsert"
+            android:textColor="@color/whitecolor"
+            android:textSize="12sp"
+            android:layout_marginBottom="20dp"/>
+
+        <ListView
+            android:id="@+id/note_list"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

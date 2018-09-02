@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CRUD Application</string>
+    <string name="logoDec">My Diary Logo</string>
+    <string name="textBoxHint">Enter Text Here</string>
+    <string name="buttonTextInsert">Insert Note</string>
+    
+    <string name="listHead">Note Head</string>
+    <string name="Added_date">Date</string>
+</resources>
