@@ -1,12 +1,21 @@
 package com.example.jay.crud;
 
 public class Notes {
-    private String note_head,addedTime,ID;
+    private String note_head,addedTime,ID,note_description;
 
-    public Notes(String note_head, String addedTime, String ID) {
+    public Notes(String note_head, String addedTime, String ID,String note_description) {
         this.note_head = note_head;
         this.addedTime = addedTime;
         this.ID = ID;
+        this.note_description = note_description;
+    }
+
+    public String getNote_description() {
+        return note_description;
+    }
+
+    public void setNote_description(String note_description) {
+        this.note_description = note_description;
     }
 
     public String getNote_head() {

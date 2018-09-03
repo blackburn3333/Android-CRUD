@@ -12,10 +12,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME = "note_table";
     private static final String COL_1 = "ID";
     private static final String COL_2 = "note_head";
+    private static final String COL_3 = "addedTime";
+    private static final String COL_4 = "note_description";
 
     public DatabaseHelper(Context context) {
 
-        super(context, TABLE_NAME, null, 2);
+        super(context, TABLE_NAME, null, 9);
     }
 
     @Override
@@ -34,23 +36,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         try {
 
             String CreateTable = "CREATE TABLE " + TABLE_NAME +
-                    "("+
+                    "(" +
                     "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-                     + COL_2 + " TEXT NOT NULL," +
-                    " addedTime TIMESTAMP" +
-                    "  DEFAULT CURRENT_TIMESTAMP"+")";
+                    + COL_2 + " TEXT NOT NULL,"
+                    + COL_4 + " TEXT NOT NULL,"
+                    + COL_3 + " TIMESTAMP "+
+                    "  DEFAULT CURRENT_TIMESTAMP" + ")";
             db.execSQL(CreateTable);
         } catch (Exception ex) {
             System.out.print("If Create -> " + ex);
         }
     }
 
-    public boolean addDataToDB(String note_head) {
+    public boolean addDataToDB(String note_head, String note_description) {
 
 
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2, note_head);
+        contentValues.put(COL_4, note_description);
 
         long result = database.insert(TABLE_NAME, null, contentValues);
         if (result == -1) {
@@ -60,10 +64,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor getDate(){
+    public Cursor getDate() {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_NAME;
-        Cursor data = db.rawQuery(query,null);
+        String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + COL_3 + " DESC";
+        Cursor data = db.rawQuery(query, null);
         return data;
     }
 }

@@ -42,7 +42,20 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/note_text"
+            android:id="@+id/note_title"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="@string/textBoxHint"
+            android:inputType="text"
+            android:lines="5"
+            android:textColor="@color/whitecolor"
+            android:textColorLink="@color/colorMainLight"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/note_dec"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

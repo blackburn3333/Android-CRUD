@@ -2,24 +2,61 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="100">
+    android:orientation="horizontal"
+    android:weightSum="100"
+    >
 
-    <TextView
-        android:id="@+id/note_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/fjallaoneregular"
-        android:text="@string/listHead"
-        android:textColor="@color/whitecolor"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/note_added_time_date"
+        <TextView
+            android:id="@+id/note_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fjallaoneregular"
+            android:text="@string/listHead"
+            android:textColor="@color/whitecolor"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/note_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fjallaoneregular"
+            android:text="@string/listHead"
+            android:textColor="@color/whitecolor"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/fjallaoneregular"
-        android:text="@string/Added_date"
-        android:textColor="@color/whitecolor" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/note_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fjallaoneregular"
+            android:text="@string/Added_date"
+            android:textAlignment="center"
+            android:textColor="@color/whitecolor"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/note_added_time_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fjallaoneregular"
+            android:text="@string/Added_date"
+            android:textAlignment="textEnd"
+            android:textColor="@color/whitecolor"
+            android:textSize="12sp" />
+    </LinearLayout>
 </LinearLayout>
