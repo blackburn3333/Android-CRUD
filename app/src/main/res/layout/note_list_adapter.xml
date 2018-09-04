@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="300dp"
     android:layout_height="match_parent"
+    android:background="@color/colorMain"
     android:orientation="horizontal"
-    android:weightSum="100"
-    >
+    android:weightSum="100">
 
     <LinearLayout
-        android:padding="5dp"
-        android:layout_width="250dp"
+        android:layout_width="200dp"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/note_header"
@@ -34,29 +34,44 @@
     </LinearLayout>
 
     <LinearLayout
-        android:padding="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_width="191dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/note_date"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="61dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/fjallaoneregular"
-            android:text="@string/Added_date"
-            android:textAlignment="center"
-            android:textColor="@color/whitecolor"
-            android:textSize="20sp" />
+            android:orientation="vertical"
+            android:padding="5dp">
 
-        <TextView
-            android:id="@+id/note_added_time_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/fjallaoneregular"
-            android:text="@string/Added_date"
-            android:textAlignment="textEnd"
-            android:textColor="@color/whitecolor"
-            android:textSize="12sp" />
+            <TextView
+                android:id="@+id/note_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/fjallaoneregular"
+                android:text="@string/Added_date"
+                android:textAlignment="viewStart"
+                android:textColor="@color/whitecolor"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/note_added_time_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/fjallaoneregular"
+                android:text="@string/Added_date"
+                android:textAlignment="viewStart"
+                android:textColor="@color/whitecolor"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/colorMain"
+            android:src="@drawable/ic_outline_delete_forever_24px"
+            android:contentDescription="@string/deletebutton" />
     </LinearLayout>
 </LinearLayout>

@@ -6,4 +6,5 @@
     
     <string name="listHead">Note Head</string>
     <string name="Added_date">Date</string>
+    <string name="deletebutton">This in note delete button</string>
 </resources>
