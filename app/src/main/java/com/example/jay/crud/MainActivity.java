@@ -27,11 +27,12 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    DatabaseHelper databaseHelper ;
+    DatabaseHelper databaseHelper;
     SystemDialoges systemDialoges = new SystemDialoges();
-
+    NoteListAdapter noteListAdapter;
+    ArrayList<Notes> notelist = new ArrayList<>();
     private Button insert_button;
-    //private ImageButton delete_note;
+
     private EditText note_text;
     private ListView note_list;
     private EditText note_dec;
@@ -69,13 +70,14 @@ public class MainActivity extends AppCompatActivity {
             note_text.setText("");
             note_dec.setText("");
             fillListView();
+            //systemDialoges.FillList(this,noteListAdapter,note_list,notelist);
         } else {
             systemDialoges.ToastMessages(this, "Inert Unsuccessful");
         }
     }
 
 
-    public void fillListView( ) {
+    public void fillListView() {
         try {
             Cursor noteData = databaseHelper.getDate();
             ArrayList<Notes> notelist = new ArrayList<>();
@@ -88,9 +90,8 @@ public class MainActivity extends AppCompatActivity {
                         noteData.getString(noteData.getColumnIndex("note_description"))
                 ));
             }
-            NoteListAdapter noteListAdapter = new NoteListAdapter(this, R.layout.note_list_adapter, notelist);
+            noteListAdapter = new NoteListAdapter(this, R.layout.note_list_adapter, notelist);
             note_list.setAdapter(noteListAdapter);
-
 
         } catch (Exception ex) {
             ex.printStackTrace();

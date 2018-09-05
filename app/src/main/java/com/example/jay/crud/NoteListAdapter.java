@@ -1,7 +1,6 @@
 package com.example.jay.crud;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -10,14 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 public class NoteListAdapter extends ArrayAdapter<Notes> {
@@ -27,13 +24,18 @@ public class NoteListAdapter extends ArrayAdapter<Notes> {
     DatabaseHelper databaseHelper;
     SystemDialoges systemDialoges = new SystemDialoges();
     MainActivity mainActivity = new MainActivity();
-    //Bundle savedInstanceState;
+    ListView note_list;
+    ArrayList<Notes> notesArrayAdapter;
+
+    NoteListAdapter noteListAdapter;
+
 
     public NoteListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Notes> objects) {
         super(context, resource, objects);
         mcontext = context;
         mResource = resource;
         databaseHelper = new DatabaseHelper(context);
+
     }
 
     @NonNull
@@ -60,25 +62,20 @@ public class NoteListAdapter extends ArrayAdapter<Notes> {
 
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM", Locale.ENGLISH);
             SimpleDateFormat dayFormatter = new SimpleDateFormat("d", Locale.ENGLISH);
-            Date date = formatter.parse(addedTime);
-            Date day = dayFormatter.parse(addedTime);
 
             txt_note_head.setText(note_head);
-            txt_note_date_time.setText(formatter.format(date));
+            txt_note_date_time.setText(formatter.format(new Date()));
             txt_note_desc.setText(note_description);
-            txt_note_date.setText(dayFormatter.format(day));
+            txt_note_date.setText(dayFormatter.format(new Date()));
 
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (databaseHelper.deleteNote(ID)) {
                         systemDialoges.ToastMessages(mcontext, "Note Deleted");
-                        //mainActivity.onCreate(savedInstanceState);
-                        notifyDataSetChanged();
+                        noteListAdapter.notifyDataSetChanged();
                     } else {
                         systemDialoges.ToastMessages(mcontext, "Note Not Deleted");
-                        notifyDataSetChanged();
-                        //mainActivity.onCreate(savedInstanceState);
                     }
                 }
             });
@@ -88,4 +85,5 @@ public class NoteListAdapter extends ArrayAdapter<Notes> {
         }
         return convertView;
     }
+
 }
