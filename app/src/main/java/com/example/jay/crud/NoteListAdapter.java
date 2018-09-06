@@ -46,7 +46,7 @@ public class NoteListAdapter extends ArrayAdapter<Notes> {
             String note_head = getItem(position).getNote_head();
             String note_description = getItem(position).getNote_description();
             String addedTime = getItem(position).getAddedTime();
-
+            String ShortDescription;
 
             Notes notes = new Notes(note_head, addedTime, ID, note_description);
 
@@ -57,17 +57,28 @@ public class NoteListAdapter extends ArrayAdapter<Notes> {
             TextView txt_note_date_time = (TextView) convertView.findViewById(R.id.note_added_time_date);
             TextView txt_note_desc = (TextView) convertView.findViewById(R.id.note_description);
             TextView txt_note_date = (TextView) convertView.findViewById(R.id.note_date);
+            TextView txt_read_more = (TextView) convertView.findViewById(R.id.read_more);
+
             ImageButton deleteButton = (ImageButton) convertView.findViewById(R.id.deleteButton);
 
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM");
             SimpleDateFormat dayFormatter = new SimpleDateFormat("yyyy-MM-dd");
+
+            if(note_description.length() >= 20){
+                ShortDescription = note_description.substring(0,20);
+                txt_read_more.setVisibility(View.VISIBLE);
+            }else {
+                ShortDescription =note_description;
+                txt_read_more.setVisibility(View.INVISIBLE);
+            }
 
             Date addedDay = dayFormatter.parse(addedTime);
             Date addedyearmonth = formatter.parse(addedTime);
 
             txt_note_head.setText(note_head);
             txt_note_date_time.setText(formatter.format(addedyearmonth));
-            txt_note_desc.setText(note_description);
+            txt_note_desc.setText(ShortDescription + " ....");
+            txt_read_more.setText("Read more");
             txt_note_date.setText(dayFormatter.format(addedDay).substring(dayFormatter.format(addedDay).length() -2));
 
             deleteButton.setOnClickListener(new View.OnClickListener() {
