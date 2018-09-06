@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/fjallaoneregular"
                 android:text="@string/Added_date"
-                android:textAlignment="viewStart"
+                android:textAlignment="center"
                 android:textColor="@color/whitecolor"
                 android:textSize="20sp" />
 
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/fjallaoneregular"
                 android:text="@string/Added_date"
-                android:textAlignment="viewStart"
+                android:textAlignment="center"
                 android:textColor="@color/whitecolor"
                 android:textSize="12sp" />
 

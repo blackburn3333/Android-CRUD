@@ -14,9 +14,6 @@ import java.util.ArrayList;
 
 public class SystemDialoges {
 
-
-    DatabaseHelper databaseHelper;
-    NoteListAdapter noteListAdapter;
     MainActivity mainActivity;
 
     public void ToastMessages(Context context, String message) {

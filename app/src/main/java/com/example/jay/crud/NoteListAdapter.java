@@ -23,11 +23,9 @@ public class NoteListAdapter extends ArrayAdapter<Notes> {
     int mResource;
     DatabaseHelper databaseHelper;
     SystemDialoges systemDialoges = new SystemDialoges();
-    MainActivity mainActivity = new MainActivity();
     ListView note_list;
-    ArrayList<Notes> notesArrayAdapter;
-
-    NoteListAdapter noteListAdapter;
+    LayoutInflater layoutInflater;
+    ArrayList<Notes> arrayList;
 
 
     public NoteListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Notes> objects) {
@@ -35,7 +33,8 @@ public class NoteListAdapter extends ArrayAdapter<Notes> {
         mcontext = context;
         mResource = resource;
         databaseHelper = new DatabaseHelper(context);
-
+        layoutInflater = LayoutInflater.from(context);
+        arrayList = objects;
     }
 
     @NonNull
@@ -60,22 +59,26 @@ public class NoteListAdapter extends ArrayAdapter<Notes> {
             TextView txt_note_date = (TextView) convertView.findViewById(R.id.note_date);
             ImageButton deleteButton = (ImageButton) convertView.findViewById(R.id.deleteButton);
 
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM", Locale.ENGLISH);
-            SimpleDateFormat dayFormatter = new SimpleDateFormat("d", Locale.ENGLISH);
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM");
+            SimpleDateFormat dayFormatter = new SimpleDateFormat("yyyy-MM-dd");
+
+            Date addedDay = dayFormatter.parse(addedTime);
+            Date addedyearmonth = formatter.parse(addedTime);
 
             txt_note_head.setText(note_head);
-            txt_note_date_time.setText(formatter.format(new Date()));
+            txt_note_date_time.setText(formatter.format(addedyearmonth));
             txt_note_desc.setText(note_description);
-            txt_note_date.setText(dayFormatter.format(new Date()));
+            txt_note_date.setText(dayFormatter.format(addedDay).substring(dayFormatter.format(addedDay).length() -2));
 
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (databaseHelper.deleteNote(ID)) {
                         systemDialoges.ToastMessages(mcontext, "Note Deleted");
-                        noteListAdapter.notifyDataSetChanged();
+                        MainActivity.getInstance().fillListView();
                     } else {
                         systemDialoges.ToastMessages(mcontext, "Note Not Deleted");
+                        MainActivity.getInstance().fillListView();
                     }
                 }
             });
@@ -85,5 +88,9 @@ public class NoteListAdapter extends ArrayAdapter<Notes> {
         }
         return convertView;
     }
-
+    public void updateResults(ArrayList<Notes> results) {
+        arrayList = results;
+        //Triggers the list update
+        notifyDataSetChanged();
+    }
 }

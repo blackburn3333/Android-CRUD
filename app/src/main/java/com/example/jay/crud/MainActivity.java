@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +28,8 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static MainActivity instance;
+
     DatabaseHelper databaseHelper;
     SystemDialoges systemDialoges = new SystemDialoges();
     NoteListAdapter noteListAdapter;
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         databaseHelper = new DatabaseHelper(this);
-
+        instance = this;
         insert_button = (Button) findViewById(R.id.inset_note_button);
         note_text = (EditText) findViewById(R.id.note_title);
         note_list = (ListView) findViewById(R.id.note_list);
@@ -70,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
             note_text.setText("");
             note_dec.setText("");
             fillListView();
-            //systemDialoges.FillList(this,noteListAdapter,note_list,notelist);
         } else {
             systemDialoges.ToastMessages(this, "Inert Unsuccessful");
         }
@@ -92,9 +94,13 @@ public class MainActivity extends AppCompatActivity {
             }
             noteListAdapter = new NoteListAdapter(this, R.layout.note_list_adapter, notelist);
             note_list.setAdapter(noteListAdapter);
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
+
+    public static MainActivity getInstance() {
+        return instance;
+    }
+
 }

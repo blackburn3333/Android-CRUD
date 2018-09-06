@@ -6,16 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "DatabaseHelper";
 
     Context context;
-    MainActivity mainActivity;
 
     private static final String TABLE_NAME = "note_table";
     private static final String COL_1 = "ID";
@@ -58,8 +54,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean addDataToDB(String note_head, String note_description) {
-
-
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2, note_head.toString());
@@ -95,6 +89,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
     }
-
-
 }
