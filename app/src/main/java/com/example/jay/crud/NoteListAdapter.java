@@ -15,7 +15,6 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
 
 public class NoteListAdapter extends ArrayAdapter<Notes> {
 
@@ -27,6 +26,7 @@ public class NoteListAdapter extends ArrayAdapter<Notes> {
     LayoutInflater layoutInflater;
     ArrayList<Notes> arrayList;
 
+    String ITEM_ID;
 
     public NoteListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Notes> objects) {
         super(context, resource, objects);
@@ -65,7 +65,7 @@ public class NoteListAdapter extends ArrayAdapter<Notes> {
             SimpleDateFormat dayFormatter = new SimpleDateFormat("yyyy-MM-dd");
 
             if(note_description.length() >= 20){
-                ShortDescription = note_description.substring(0,20);
+                ShortDescription = note_description.substring(0,20) + ".....";
                 txt_read_more.setVisibility(View.VISIBLE);
             }else {
                 ShortDescription =note_description;
@@ -77,8 +77,7 @@ public class NoteListAdapter extends ArrayAdapter<Notes> {
 
             txt_note_head.setText(note_head);
             txt_note_date_time.setText(formatter.format(addedyearmonth));
-            txt_note_desc.setText(ShortDescription + " ....");
-            txt_read_more.setText("Read more");
+            txt_note_desc.setText(ShortDescription);
             txt_note_date.setText(dayFormatter.format(addedDay).substring(dayFormatter.format(addedDay).length() -2));
 
             deleteButton.setOnClickListener(new View.OnClickListener() {
@@ -93,15 +92,18 @@ public class NoteListAdapter extends ArrayAdapter<Notes> {
                     }
                 }
             });
+
+            txt_read_more.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("itemID -> ",ID);
+                    systemDialoges.startActivity(mcontext,view_full_note.class,ID);
+                }
+            });
         } catch (Exception ex) {
             ex.printStackTrace();
             Log.d("List", ex.toString());
         }
         return convertView;
-    }
-    public void updateResults(ArrayList<Notes> results) {
-        arrayList = results;
-        //Triggers the list update
-        notifyDataSetChanged();
     }
 }

@@ -67,9 +67,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor getDate() {
+    public Cursor getData() {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + COL_3 + " DESC";
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
+
+    public Cursor getData(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL_1 + " = " + id;
         Cursor data = db.rawQuery(query, null);
         return data;
     }

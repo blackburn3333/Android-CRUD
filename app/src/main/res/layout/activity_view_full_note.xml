@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorMain"
+    android:padding="20dp"
+    tools:context=".view_full_note"
+    tools:layout_editor_absoluteX="20dp"
+    tools:layout_editor_absoluteY="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/NoteTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fjallaoneregular"
+            android:text="@string/listHead"
+            android:textAlignment="center"
+            android:textColor="@color/whitecolor"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/NoteAddedDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fjallaoneregular"
+            android:text="@string/Added_date"
+            android:textAlignment="center"
+            android:textColor="@color/whitecolor"
+            android:textSize="12sp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="404dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/NoteDec"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20sp"
+                    android:fontFamily="@font/fjallaoneregular"
+                    android:text="@string/listHead"
+                    android:textAlignment="center"
+                    android:textColor="@color/whitecolor"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/delete_note"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:background="@color/colorMain"
+                android:contentDescription="@string/deletebutton"
+                android:src="@drawable/ic_outline_delete_forever_24px" />
+
+            <ImageButton
+                android:id="@+id/update_note"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:background="@color/colorMain"
+                android:contentDescription="@string/updateButton"
+                android:src="@drawable/ic_outline_edit_24px" />
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void fillListView() {
         try {
-            Cursor noteData = databaseHelper.getDate();
+            Cursor noteData = databaseHelper.getData();
             ArrayList<Notes> notelist = new ArrayList<>();
             while (noteData.moveToNext()) {
 

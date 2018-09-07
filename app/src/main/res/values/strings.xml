@@ -3,9 +3,10 @@
     <string name="logoDec">My Diary Logo</string>
     <string name="textBoxHint">Enter Text Here</string>
     <string name="buttonTextInsert">Insert Note</string>
-    
+
     <string name="listHead">Note Head</string>
     <string name="Added_date">Date</string>
-    <string name="deletebutton">This in note delete button</string>
+    <string name="deletebutton">This is a note delete button</string>
+    <string name="updateButton">This is a note update button</string>
     <string name="readmore">Read more</string>
 </resources>
